@@ -1,0 +1,2 @@
+- Instalar geopandas en Windows es difícil y es poco robusto en cuanto al formato del shapefile
+- Usamos en vez https://mapshaper.org/
