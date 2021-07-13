@@ -20,7 +20,8 @@ def read_shapefile(filepath):
 
 def build_map_figure(island_shape, city_shape, points_of_interest):
     px.set_mapbox_access_token(open('.mapbox_token').read())
-    fig = px.scatter_mapbox(points_of_interest, lat='lat', lon='lon')
+    fig = px.scatter_mapbox(points_of_interest, lat='lat', lon='lon',
+                            color='car_id', color_discrete_sequence=px.colors.qualitative.Dark24)  # TODO: buscar mejor escala de color https://plotly.com/python/discrete-color/#color-sequences-in-plotly-express
 
     fig.update_layout(mapbox_style='white-bg',
         mapbox_layers=[
@@ -44,7 +45,7 @@ def build_map_figure(island_shape, city_shape, points_of_interest):
 def main():
     island_shape = read_shapefile(ISLAND_PATH)
     city_shape = read_shapefile(CITY_PATH)
-    points_of_interest = pd.read_csv(POI_6H_PATH, names=['date', 'car_id', 'lat', 'lon'])
+    points_of_interest = pd.read_csv(POI_6H_PATH, names=['date', 'car_id', 'lat', 'lon'], dtype={'car_id': str})
 
     fig = build_map_figure(island_shape, city_shape, points_of_interest)
     fig.show()
