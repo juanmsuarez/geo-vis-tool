@@ -35,6 +35,7 @@ def read_shapefile(filepath):
 def build_map_figure(island_shape, city_shape, points_of_interest):
     px.set_mapbox_access_token(open('.mapbox_token').read())
     fig = px.scatter_mapbox(points_of_interest, lat='lat', lon='lon',
+                            center={'lat': sum(CITY_BACKGROUND_LAT)/2, 'lon': sum(CITY_BACKGROUND_LON)/2}, zoom=13,
                             color='car_id', color_discrete_sequence=px.colors.qualitative.Dark24)  # TODO: buscar mejor escala de color https://plotly.com/python/discrete-color/#color-sequences-in-plotly-express
 
     fig.update_layout(mapbox_style='white-bg',
