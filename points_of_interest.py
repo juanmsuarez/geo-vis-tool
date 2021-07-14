@@ -61,6 +61,8 @@ def build_map_figure(island_shape, city_shape, points_of_interest):
                               'sourcetype': 'geojson',
                               'source': city_shape,
                               'type': 'line',
+                              'line': {'width': 1},
+                              'opacity': 0.5
                           }
                       ])
 
