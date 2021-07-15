@@ -99,7 +99,8 @@ def build_activity_figure(selected_points_of_interest):
     xaxes_ticks = END_HOUR - START_HOUR + 1
     yaxes_ticks = end_day - start_day + 1
     activity_figure = px.density_heatmap(x=hours_of_interest, y=days_of_interest, z=activity_frequency,
-                                         nbinsx=xaxes_ticks,nbinsy=yaxes_ticks,
+                                         labels={'x': 'Hour', 'y': 'Day of month'},
+                                         nbinsx=xaxes_ticks, nbinsy=yaxes_ticks,
                                          color_continuous_scale=['#eeeeee', '#76cf63'])  # TODO constants
     activity_figure.update_xaxes(nticks=xaxes_ticks)
     activity_figure.update_yaxes(nticks=yaxes_ticks)
@@ -120,10 +121,10 @@ def build_html_doc(app):
             value=15
         ),
 
-        dcc.Graph(id='map', style={'height': '60vh'}, figure={}),
+        dcc.Graph(id='map', style={'height': '90vh'}, figure={}),
 
         html.Div(id='activity-chart-div', children=[
-            dcc.Graph(id='activity-chart', style={'height': '30vh'}, figure={})
+            dcc.Graph(id='activity-chart', figure={})
         ])
     ])
 
