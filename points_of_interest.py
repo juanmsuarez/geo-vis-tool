@@ -99,7 +99,7 @@ def build_activity_figure(selected_points_of_interest):
     xaxes_ticks = END_HOUR - START_HOUR + 1
     yaxes_ticks = end_day - start_day + 1
     activity_figure = px.density_heatmap(x=hours_of_interest, y=days_of_interest, z=activity_frequency,
-                                         labels={'x': 'Hour', 'y': 'Day of month'},
+                                         labels={'x': 'Hour', 'y': 'Day of month', 'z': 'Points of interest'},
                                          nbinsx=xaxes_ticks, nbinsy=yaxes_ticks,
                                          color_continuous_scale=['#eeeeee', '#76cf63'])  # TODO constants
     activity_figure.update_xaxes(nticks=xaxes_ticks)
